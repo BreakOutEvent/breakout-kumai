@@ -1,0 +1,65 @@
+{
+  "name": "hubot-slack",
+  "version": "3.4.2",
+  "description": "A Slack adapter for hubot",
+  "main": "./index",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register --reporter spec"
+  },
+  "keywords": [
+    "hubot",
+    "tinyspeck",
+    "adapter",
+    "slack"
+  ],
+  "author": "Slack Technologies, Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/slackhq/hubot-slack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slackhq/hubot-slack/issues"
+  },
+  "dependencies": {
+    "slack-client": "~1.4.0"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.7.1",
+    "grunt": "~0.4.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-release": "~0.6.0",
+    "should": "~2.0.2",
+    "mocha": "~1.13.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-shell": "~0.5.0",
+    "hubot": "~2.11"
+  },
+  "engines": {
+    "node": ">=0.4.7",
+    "npm": ">= 1.1.x"
+  },
+  "contributors": [
+    {
+      "name": "Myles Grant",
+      "email": "myles@tinyspeck.com"
+    },
+    {
+      "name": "Evan Solomon"
+    },
+    {
+      "name": "Jon Dalberg"
+    },
+    {
+      "name": "Patrick Connolly"
+    },
+    {
+      "name": "Chip Hayner",
+      "email": "chayner@centresource.com"
+    },
+    {
+      "name": "Eric Lindvall",
+      "email": "eric@papertrailapp.com"
+    }
+  ]
+}
