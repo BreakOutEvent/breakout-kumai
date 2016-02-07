@@ -2,7 +2,7 @@
   "githubUser": "BreakOutEvent",
   "githubTimeout": 5000,
   "slackTimeout": 5000,
-  "successReaction": "heavy_check_mark",
+  "successReaction": "created_issue",
   "rules": [
     {
       "reactionName": "android_bug",
