@@ -1,12 +1,28 @@
 {
-  "githubUser": "breakout-kumai",
+  "githubUser": "BreakOutEvent",
   "githubTimeout": 5000,
   "slackTimeout": 5000,
   "successReaction": "heavy_check_mark",
   "rules": [
     {
-      "reactionName": "large_orange_diamond",
+      "reactionName": "backend_bug",
       "githubRepository": "breakout-backend"
+    },
+    {
+      "reactionName": "frontend_bug",
+      "githubRepository": "breakout-frontend"
+    },
+    {
+      "reactionName": "ios_bug",
+      "githubRepository": "breakout-ios"
+    },
+    {
+      "reactionName": "android_bug",
+      "githubRepository": "breakout-android"
+    },
+    {
+      "reactionName": "general_bug",
+      "githubRepository": "breakout-general-issues"
     }
   ]
 }
