@@ -5,6 +5,10 @@
   "successReaction": "heavy_check_mark",
   "rules": [
     {
+      "reactionName": "android_bug",
+      "githubRepository": "breakout-android"
+    },
+    {
       "reactionName": "backend_bug",
       "githubRepository": "breakout-backend"
     },
@@ -13,16 +17,12 @@
       "githubRepository": "breakout-frontend"
     },
     {
-      "reactionName": "ios_bug",
-      "githubRepository": "breakout-ios"
-    },
-    {
-      "reactionName": "android_bug",
-      "githubRepository": "breakout-android"
-    },
-    {
       "reactionName": "general_bug",
       "githubRepository": "breakout-general-issues"
+    },
+    {
+      "reactionName": "ios_bug",
+      "githubRepository": "breakout-ios"
     }
   ]
 }
