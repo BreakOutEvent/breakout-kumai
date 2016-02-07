@@ -23,6 +23,10 @@
     {
       "reactionName": "ios_bug",
       "githubRepository": "breakout-ios"
+    },
+    {
+      "reactionName": "kumai_bug",
+      "githubRepository": "breakout-kumai"
     }
   ]
 }
