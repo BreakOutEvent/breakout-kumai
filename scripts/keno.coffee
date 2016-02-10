@@ -4,3 +4,6 @@ module.exports = (robot) ->
 
   robot.hear /.*test.*/i, (res) ->
     res.send ":beer::beer::beer:"
+
+  robot.hear /.*Wer ist kumai(?: senpai)?.*/i, (res) ->
+    res.send "Ich bin dein neuer bester Freund :)"
