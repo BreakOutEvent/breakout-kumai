@@ -1,10 +1,17 @@
 request = require "request"
 
-module.exports.is_male = (msg, cb) ->
+module.exports.isMaleFromMessage = (msg, cb) ->
   try
     name = msg.message.user.slack.profile.first_name
   catch err
     cb err, null
+  request "https://api.genderize.io/?name=#{name}", (err, res, body) ->
+    cb err if err
+    gender_string = JSON.parse(body).gender
+    is_male = (gender_string == "male")
+    cb null, is_male
+
+module.exports.isMale = (name, cb) ->
   request "https://api.genderize.io/?name=#{name}", (err, res, body) ->
     cb err if err
     gender_string = JSON.parse(body).gender
