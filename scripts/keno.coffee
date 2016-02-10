@@ -7,3 +7,6 @@ module.exports = (robot) ->
 
   robot.hear /.*Wer ist kumai(?: senpai)?.*/i, (res) ->
     res.send "Ich bin dein neuer bester Freund :)"
+
+  robot.hear /.*Was ist BreakOut.*/i, (res) ->
+    res.send "Dein Leben, Deine Liebe und Deine Zukunft!"
