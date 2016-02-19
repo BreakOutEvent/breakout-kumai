@@ -12,5 +12,9 @@ module.exports = function(robot) {
     delayed(res, 'Bestelle Pizza ' + pizzaVariants[Math.floor(Math.random()*pizzaVariants.length)], 1000);
     delayed(res, 'Bestellung erfolgreich!', 3000);
    });
+  
+  robot.hear(/buzz.*/i, function(){
+    request('http://192.168.1.76:8080/hue/');
+  });
 };
     
