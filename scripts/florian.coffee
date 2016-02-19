@@ -22,6 +22,7 @@ module.exports = (robot) ->
           res.send "Uuhh ist da wohl ein BreakOut Baby in Arbeit?"
 
   robot.hear /.*/, (message) ->
-    robot.send {room: "it-kumai-logs"}, message.message.user.name
-    robot.send {room: "it-kumai-logs"}, message.envelope.message.text
-
+    user = message.message.user.name
+    text = message.envelope.message.text
+    response = user+" schreibt `"+text+"`"
+    robot.send {room: "it-kumai-logs"}, response
