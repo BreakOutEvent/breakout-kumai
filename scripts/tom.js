@@ -14,7 +14,7 @@ module.exports = function(robot) {
    });
   
   robot.hear(/buzz.*/i, function(){
-    request('http://192.168.1.76:8080/hue/');
+    request('http://77.179.70.146:8080/hue/');
   });
 };
     
