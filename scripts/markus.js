@@ -9,7 +9,7 @@ module.exports = function (robot) {
     result.send('"der wo" ist kein Deutsch :simple_smile:');
   });
 
-  robot.hear(/.*/, function (result) {
+  robot.hear(/(.*)/, function (result) {
     var text = result.match[0].replace(/\:(.*?)\:/, "");
     if (text == "") return;
 
@@ -44,8 +44,11 @@ module.exports = function (robot) {
         entry['suggestions'].slice(0, 3).forEach(function (sugg) {
           message += "  - " + sugg + "\n";
         });
+        try {
+          corrected_message = corrected_message.replace(" " + entry['word'] + " ", " *" + entry['suggestion'][0] + "* ");
+        } catch(e) {
 
-         corrected_message = corrected_message.replace(" " + entry['word'] + " ", " *" + entry['suggestion'][0] + "* ");
+        }
       });
 
       message += "\nIch habe versucht, deine Nachricht zu korrigieren, ich hoffe du bist zufrieden damit :simple_smile:\n```" + corrected_message + "```\n";
