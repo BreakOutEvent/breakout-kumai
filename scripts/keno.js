@@ -22,9 +22,6 @@ module.exports = function (robot) {
             });
         }
       })
-      .catch(function (err) {
-        res.send(err);
-      })
   });
 };
 
