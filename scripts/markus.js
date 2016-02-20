@@ -23,14 +23,15 @@ module.exports = function (robot) {
     };
     request({url: 'http://www.webspellchecker.net/web_api_test.php', qs: settings}, function (err, response, body) {
       var obj = JSON.parse(body.substr(4));
-      console.log(obj);
 
       if (!obj.length) return;
 
-      var message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\nIch habe mir mal erlaubt, deine Nachricht zu verbessern :simple_smile:\n";
+      var message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\nIch habe mir mal erlaubt, deine Nachricht zu verbessern :simple_smile\n";
+
+      message += "\n````" + result.match[0] + "```\n";
 
       obj.forEach(function (entry) {
-        message += "\nDein falsches Wort: *" + entry['word'] + "*\n";
+        message += "\nFalsches Wort: *" + entry['word'] + "*\n";
         message += "Vorschläge:\n";
 
 
