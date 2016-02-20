@@ -15,7 +15,7 @@ module.exports = function(robot) {
   
   robot.hear(/([A-Z]+\s){2,}/, function(res){
     var userName = res.message.user.name;
-    res.send('Hey ${userName}, Zeit fuer eine Mikropause. Setze dich erstmal aufrecht hin. Lege deine Haende auf die Oberschenkel und jetzt... Tief einatmen... halten... und ausatmen! Einatmen.... halten... Ausatmen. Und jetzt wieder ab an die Arbeit! BreakOut programmiert sich nicht von alleine!');
+    res.send(`Hey ${userName}, Zeit fuer eine Mikropause. Setze dich erstmal aufrecht hin. Lege deine Haende auf die Oberschenkel und jetzt... Tief einatmen... halten... und ausatmen! Einatmen.... halten... Ausatmen. Und jetzt wieder ab an die Arbeit! BreakOut programmiert sich nicht von alleine!`);
   });
 };
     
