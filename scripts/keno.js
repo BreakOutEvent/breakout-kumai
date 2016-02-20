@@ -23,5 +23,10 @@ module.exports = function (robot) {
         }
       })
   });
+
+  robot.hear(/.*kumai Man munkelt (.*)/i, function(res) {
+    res.send({room: "geruechte"}, 'Man munkelt' + res.match[1] );
+  });
+
 };
 
