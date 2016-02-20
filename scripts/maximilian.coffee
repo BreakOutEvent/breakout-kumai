@@ -6,4 +6,7 @@ module.exports = (robot) ->
     res.send "Fun fact: "+array[Math.floor(Math.random() * (2))]
 
   robot.hear /.*max.*/i,(res) ->
-     res.send "Max lässt mich gerade auf viele verschiedene Sätze reagieren! Was für ein Genie!"
+    res.send "Max lässt mich gerade auf viele verschiedene Sätze reagieren! Was für ein Genie!"
+
+  robot.hear /.*(Drink|drink).*/i, (res) ->
+    res.send ":cocktail:"  
