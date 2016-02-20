@@ -11,3 +11,5 @@ module.exports = (robot) ->
   robot.hear /.*Was ist BreakOut.*/i, (res) ->
     res.send "Dein Leben, Deine Liebe und Deine Zukunft!"
 
+  robot.hear /^Gerücht (.*)$/, (res) ->
+    res.send {room: "geruechte"}, res.match[1]
