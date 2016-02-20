@@ -17,6 +17,9 @@ module.exports = function (robot) {
             .then(function (team) {
               res.send(team);
             })
+            .catch(function (err) {
+              res.send(err.error);
+            });
         }
       })
       .catch(function (err) {

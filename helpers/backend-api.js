@@ -126,14 +126,8 @@ API.createUser = function (email, password) {
 API.getTeam = function(eventID, teamID) {
   return new Promise(function (resolve, reject) {
     request
-      .post({
-        url: url + '/event/' + eventID + '/team/' + teamID,
-        auth: {
-          user: config.clientID,
-          pass: config.clientSecret
-        },
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify({email: email, password: password})
+      .get({
+        url: url + '/event/' + eventID + '/team/' + teamID + '/'
       }, handleResponse(resolve, reject));
   });
 };
@@ -144,10 +138,8 @@ function handleResponse(resolve, reject) {
       throw error;
     } else {
       if (response.statusCode.toString().match(/^2\d\d$/)) {
-        console.log(JSON.parse(body), response.statusCode);
         resolve(JSON.parse(body));
       } else {
-        console.log(JSON.parse(body), response.statusCode);
         reject(JSON.parse(body));
       }
     }
