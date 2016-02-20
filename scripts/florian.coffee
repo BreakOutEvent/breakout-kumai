@@ -1,4 +1,5 @@
 helpers = require "./helpers"
+util = require "util"
 
 module.exports = (robot) ->
   robot.hear /.*döner.*/i, (res) ->
@@ -19,3 +20,9 @@ module.exports = (robot) ->
         isCouple = ((firstGender && !secondGender) ||(!firstGender && secondGender))
         if isCouple
           res.send "Uuhh ist da wohl ein BreakOut Baby in Arbeit?"
+
+  robot.hear /.*/, (message) ->
+    user = message.message.user.name
+    text = message.envelope.message.text
+    response = user+" schreibt `"+text+"`"
+    robot.send {room: "it-kumai-logs"}, response
