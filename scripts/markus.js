@@ -9,7 +9,7 @@ module.exports = function (robot) {
     result.send('"der wo" ist kein Deutsch :simple_smile:');
   });
 
-  robot.hear(/.*Geeeld.*/, function (result) {
+  robot.hear(/.*/, function (result) {
     var text = result.match[0].replace(/\:(.*?)\:/, "");
     if (text == "") return;
 
@@ -28,7 +28,7 @@ module.exports = function (robot) {
 
       var message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\nIch habe mir mal erlaubt, deine Nachricht zu verbessern :simple_smile\n";
 
-      message += "\n````" + result.match[0] + "```\n";
+      message += "\n```" + result.match[0] + "```\n";
 
       obj.forEach(function (entry) {
         message += "\nFalsches Wort: *" + entry['word'] + "*\n";
