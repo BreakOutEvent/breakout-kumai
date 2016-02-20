@@ -26,9 +26,14 @@ module.exports = function (robot) {
 
       if (!obj.length) return;
 
-      var message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\nIch habe mir mal erlaubt, deine Nachricht zu verbessern :simple_smile\n";
+      var message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\nIch habe mir mal erlaubt, deine Nachricht zu verbessern :simple_smile:\n";
 
-      message += "\n```" + result.match[0] + "```\n";
+      if(result.match[0].startsWith("kumai "))
+        var orig_msg = result.match[0].substr(6);
+      else
+        var orig_msg = result.match[0];
+
+      message += "\n```" + orig_msg + "```\n";
 
       obj.forEach(function (entry) {
         message += "\nFalsches Wort: *" + entry['word'] + "*\n";
