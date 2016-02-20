@@ -35,6 +35,7 @@ module.exports = function (robot) {
 
       message += "\n```" + orig_msg + "```\n";
 
+      var corrected_message = result.match[0];
       obj.forEach(function (entry) {
         message += "\nFalsches Wort: *" + entry['word'] + "*\n";
         message += "Vorschläge:\n";
@@ -43,7 +44,11 @@ module.exports = function (robot) {
         entry['suggestions'].slice(0, 3).forEach(function (sugg) {
           message += "  - " + sugg + "\n";
         });
+
+         corrected_message = corrected_message.replace(" " + entry['word'] + " ", " *" + entry['suggestion'][0] + "* ");
       });
+
+      message += "\nIch habe versucht, deine Nachricht zu korrigieren, ich hoffe du bist zufrieden damit :)\n```" + corrected_message + "```\n";
 
       robot.messageRoom(result.message.user.name, message);
     });
