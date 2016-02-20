@@ -39,7 +39,7 @@ module.exports = function (robot) {
         });
       });
 
-      result.send(message, {room: result.message.user.name});
+      robot.messageRoom(result.message.user.name, message);
     });
   });
 };
