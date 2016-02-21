@@ -9,13 +9,14 @@ module.exports = function (robot) {
     result.send('"der wo" ist kein Deutsch :simple_smile:');
   });
 
-  robot.hear(/(.*)/, function (result) {
+  robot.hear(/[\s\S]*/, function (result) {
     var text = result.match[0].replace(/\:(.*?)\:/, "");
     if (text == "") return;
 
     var ignored = [
       'kumai',
-      'döner'
+      'döner',
+      'doni'
     ];
 
     var settings = {
