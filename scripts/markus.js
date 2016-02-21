@@ -13,6 +13,11 @@ module.exports = function (robot) {
     var text = result.match[0].replace(/\:(.*?)\:/, "");
     if (text == "") return;
 
+    var ignored = [
+      'kumai',
+      'döner'
+    ];
+
     var settings = {
       'text': text,
       'slang': 'de_DE',
@@ -21,22 +26,32 @@ module.exports = function (robot) {
       'ignore_words_with_numbers': 1,
       'ignore_domain_names': 1
     };
+
     request({url: 'http://www.webspellchecker.net/web_api_test.php', qs: settings}, function (err, response, body) {
       var obj = JSON.parse(body.substr(4));
 
       if (!obj.length) return;
 
-      var message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\n";
+      //message += "\n```" + orig_msg + "```\n";
 
-      if(result.match[0].startsWith("kumai "))
-        var orig_msg = result.match[0].substr(6);
-      else
-        var orig_msg = result.match[0];
-
-      message += "\n```" + orig_msg + "```\n";
-
+      var message = "";
       var corrected_message = result.match[0];
       obj.forEach(function (entry) {
+
+        if (entry['suggestions'] === undefined || entry['suggestions'].length == 0)
+          return;
+
+        console.log(entry['word']);
+
+        if (ignored.indexOf(entry['word'].toLowerCase().trim()) != -1)
+          return;
+
+        if (entry['word'].indexOf(':') == 0 && entry['word'].lastIndexOf(':') == entry['word'].length - 1)
+          return;
+
+
+        corrected_message = corrected_message.replace(new RegExp('\\b' + entry['word'] + '\\b', 'g'), '*' + entry['suggestions'][0] + '*');
+
         message += "\nFalsches Wort: *" + entry['word'] + "*\n";
         message += "Vorschläge:\n";
 
@@ -44,16 +59,14 @@ module.exports = function (robot) {
         entry['suggestions'].slice(0, 3).forEach(function (sugg) {
           message += "  - " + sugg + "\n";
         });
-        try {
-          corrected_message = corrected_message.replace(" " + entry['word'] + " ", " *" + entry['suggestion'][0] + "* ");
-        } catch(e) {
-
-        }
       });
 
-      message += "\nIch habe versucht, deine Nachricht zu korrigieren, ich hoffe du bist zufrieden damit :simple_smile:\n```" + corrected_message + "```\n";
+      if (message.length != 0) {
+        message = "Es sieht so aus, als würde dein Text Rechtschreibfehler beinhalten :(\n" + message;
+        message += "\nIch habe versucht, deine Nachricht zu korrigieren, ich hoffe du bist zufrieden damit :simple_smile:\n```" + corrected_message + "```\n";
 
-      robot.messageRoom(result.message.user.name, message);
+        robot.messageRoom(result.message.user.name, message);
+      }
     });
   });
 };
