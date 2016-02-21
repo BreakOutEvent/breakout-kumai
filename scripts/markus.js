@@ -42,15 +42,12 @@ module.exports = function (robot) {
         if (entry['suggestions'] === undefined || entry['suggestions'].length == 0)
           return;
 
-        console.log(entry['word']);
-
         if (ignored.indexOf(entry['word'].toLowerCase().trim()) != -1)
           return;
 
         if (entry['word'].indexOf(':') == 0 && entry['word'].lastIndexOf(':') == entry['word'].length - 1)
           return;
-
-
+        
         corrected_message = corrected_message.replace(new RegExp('\\b' + entry['word'] + '\\b', 'g'), '*' + entry['suggestions'][0] + '*');
 
         message += "\nFalsches Wort: *" + entry['word'] + "*\n";
