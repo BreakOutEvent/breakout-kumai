@@ -9,7 +9,7 @@ module.exports = function (robot) {
     result.send('"der wo" ist kein Deutsch :simple_smile:');
   });
 
-  robot.hear(/[\s\S]*/, function (result) {
+  robot.hear(/spellcheck [\s\S]*/, function (result) {
     var text = result.match[0].replace(/\:(.*?)\:/, "");
     if (text == "") return;
 
@@ -47,7 +47,7 @@ module.exports = function (robot) {
 
         if (entry['word'].indexOf(':') == 0 && entry['word'].lastIndexOf(':') == entry['word'].length - 1)
           return;
-        
+
         corrected_message = corrected_message.replace(new RegExp('\\b' + entry['word'] + '\\b', 'g'), '*' + entry['suggestions'][0] + '*');
 
         message += "\nFalsches Wort: *" + entry['word'] + "*\n";
