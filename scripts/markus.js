@@ -1,15 +1,15 @@
 var request = require('request');
 
 module.exports = function (robot) {
-  robot.hear(/.*bescheid.*/i, function (result) {
+  robot.respond(/.*bescheid.*/i, function (result) {
     result.send('Bescheid! :blush:');
   });
 
-  robot.hear(/.*der wo.*/i, function (result) {
+  robot.respond(/.*der wo.*/i, function (result) {
     result.send('"der wo" ist kein Deutsch :simple_smile:');
   });
 
-  robot.hear(/spellcheck [\s\S]*/, function (result) {
+  robot.respond(/spellcheck [\s\S]*/, function (result) {
     var text = result.match[0].replace(/\:(.*?)\:/, "");
     if (text == "") return;
 

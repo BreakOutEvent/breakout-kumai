@@ -2,24 +2,24 @@ helpers = require "./helpers"
 ical = require "ical"
 
 module.exports = (robot) ->
-  robot.hear /.*iOS.*/i, (res) ->
+  robot.respond /.*iOS.*/i, (res) ->
     res.send "Hey!!! Hab ich iOS gehört?! Wir suchen da immer noch gute Entwickler ;)"
 
-  robot.hear /.*aktuell|stand|apps.*/i, (res) ->
+  robot.respond /.*aktuell|stand|apps.*/i, (res) ->
     res.send "Deine Mudda is ne App!!! Maaaaaaaaan, einmal die Füße stillhalten hier!!!!"
 
-  robot.hear /.*Nächstes Event?.*/i, (res) ->
+  robot.respond /.*Nächstes Event?.*/i, (res) ->
     ical.fromURL 'https://teamweek.com/api/v3/sharing/z2kwvpps38rgtj0pwq19/icalendar', {}, (err, data) ->
       for k of data
         if data.hasOwnProperty(k)
           event = data[k]
           if event.summary!=undefined and event.start!=undefined and event.end!=undefined
-            res.send event.summary 
+            res.send event.summary
             res.send "von: " + event.start + " bis: " + event.end
       return
 
 
-  robot.listen(
+  robot.respond(
     (message) -> # Match function
       # Occassionally respond to things that Steve says
       message.user.name is "Leo" and Math.random() > 0.8
@@ -27,9 +27,9 @@ module.exports = (robot) ->
       # Let Steve know how happy you are that he exists
       response.reply "Hey mein schnuckelchen ;)"
   )
-    
 
-  robot.hear /.*(@[a-z1-9]*) und (@[a-z1-9]*).*/i, (res) ->
+
+  robot.respond /.*(@[a-z1-9]*) und (@[a-z1-9]*).*/i, (res) ->
     firstName = res.match[1]
     secondName = res.match[2]
 

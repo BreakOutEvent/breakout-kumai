@@ -8,7 +8,7 @@ var request = require('request');
 
 module.exports = function (robot) {
 
-  robot.hear(/Wer ist in Team (\d+)/i, function (res) {
+  robot.respond(/Wer ist in Team (\d+)/i, function (res) {
     var teamnr = res.match[1];
 
     API.getModel('event')
@@ -22,9 +22,10 @@ module.exports = function (robot) {
               res.send(err.error);
             });
         }
-      })
+      });
   });
-  robot.hear(/AddFeature (.+)/, function (res) {
+
+  robot.respond(/AddFeature (.+)/, function (res) {
     console.log(res.match[1]);
     var token = process.env.HUBOT_GITHUB_TOKEN;
 

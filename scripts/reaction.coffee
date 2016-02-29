@@ -19,7 +19,7 @@ format = require('util').format
 module.exports = (robot) ->
   robot.parseReplyGifTag = (text) ->
     text.toLowerCase().replace(/[^\w \-]+/g, '').replace(/--+/g, '').replace(/\ /g, '-')
-  robot.hear /^!reply (.+)$/, (msg) ->
+  robot.respond /^!reply (.+)$/, (msg) ->
     tag = robot.parseReplyGifTag msg.match[1]
     getGifs tag, (gifs) ->
       if gifs.length == 0

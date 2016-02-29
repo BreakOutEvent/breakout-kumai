@@ -2,13 +2,13 @@ helpers = require "./helpers"
 util = require "util"
 
 module.exports = (robot) ->
-  robot.hear /.*döner.*/i, (res) ->
+  robot.respond /.*döner.*/i, (res) ->
     res.send ":doener::doener::doener:"
 
-  robot.hear /.*die IT.*/i, (res) ->
+  robot.respond /.*die IT.*/i, (res) ->
     res.send "Nerds everywhere..."
 
-  robot.hear /.*(@[a-z1-9]*) und (@[a-z1-9]*).*/i, (res) ->
+  robot.respond /.*(@[a-z1-9]*) und (@[a-z1-9]*).*/i, (res) ->
     firstName = res.match[1]
     secondName = res.match[2]
 
