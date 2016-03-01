@@ -17,18 +17,7 @@ module.exports = (robot) ->
             res.send event.summary
             res.send "von: " + event.start + " bis: " + event.end
       return
-
-
-  robot.respond(
-    (message) -> # Match function
-      # Occassionally respond to things that Steve says
-      message.user.name is "Leo" and Math.random() > 0.8
-    (response) -> # Standard listener callback
-      # Let Steve know how happy you are that he exists
-      response.reply "Hey mein schnuckelchen ;)"
-  )
-
-
+  
   robot.respond /.*(@[a-z1-9]*) und (@[a-z1-9]*).*/i, (res) ->
     firstName = res.match[1]
     secondName = res.match[2]
